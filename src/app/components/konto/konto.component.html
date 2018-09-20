@@ -1,0 +1,7 @@
+<p>
+  konto works!
+</p>
+<button (click)="onSetKontos()">Set kontos</button>
+<ul>
+  <li *ngFor="let k of kontos" > ID: {{ k.id }}, NAZIV: {{ k.naziv}}, RAČUN: {{k.racun}}</li>
+</ul>
