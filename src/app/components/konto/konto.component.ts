@@ -14,13 +14,7 @@ export class KontoComponent implements OnInit {
   constructor(private kontoService: KontoService) { }
 
   ngOnInit() {
-    this.kontoService.getAllKontos();
-  }
-
-  onSetKontos() {
-    if (!this.kontoService.kontos) {
-      this.kontoService.getAllKontos();
-    }
-    this.kontos = this.kontoService.getKontos();
+    this.kontoService.getAllKontos()
+        .subscribe(data => this.kontos = data);
   }
 }

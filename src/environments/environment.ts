@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  //API_URL: 'http://localhost:8083/'
-  API_URL: 'http://147.91.175.211:8080/epn/'
+  API_URL: 'http://localhost:8083/api/'
+  // API_URL: 'http://localhost:8083/'
+  // API_URL: 'http://147.91.175.211:8080/epn/'
 };
 
 /*

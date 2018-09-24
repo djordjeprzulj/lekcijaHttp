@@ -2,24 +2,32 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Konto } from '../models/konto.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KontoService {
 
-  kontos: Konto[];
-
   constructor(private httpClient: HttpClient) {}
 
-  public getAllKontos() {
-    const url = environment.API_URL + 'konto';
-    this.httpClient.get<Konto[]>(url)
-      .subscribe(res => this.kontos = res);
+  public getAllKontos(): Observable<Konto[]> {
+    return this.httpClient.get<Konto[]>(environment.API_URL + 'konto');
   }
 
-  getKontos(): Konto[] {
-    return this.kontos;
+  public getKonto(id: number): Observable<Konto> {
+    return this.httpClient.get<Konto>(environment.API_URL + 'konto/' + id);
   }
 
+  public insertKonto(konto: Konto): Observable<Object> {
+    return this.httpClient.post(environment.API_URL + 'konto/', konto);
+  }
+
+  public updateKonto(konto: Konto): Observable<Object> {
+    return this.httpClient.put(environment.API_URL + 'konto/' + konto.id, konto);
+  }
+
+  public deleteKonto(id: number): Observable<Object> {
+    return this.httpClient.delete(environment.API_URL + 'konto/' + id);
+  }
 }
